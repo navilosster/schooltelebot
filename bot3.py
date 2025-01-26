@@ -19,7 +19,7 @@ def bot_message(message):
     if message.chat.type == 'private':
         if message.text == 'Меню блюд по дням':
             markup = types.ReplyKeyboardMarkup(resize_keyboard = True)
-            item1 = types.KeyboardButton('11-ый день')
+            item1 = types.KeyboardButton('1-ый день')
             item2 = types.KeyboardButton('2-ый день')
             item3 = types.KeyboardButton('3-ый день')
             item4 = types.KeyboardButton('4-ый день')
