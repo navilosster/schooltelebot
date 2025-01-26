@@ -43,6 +43,17 @@ def bot_message(message):
             markup.add(item1, item2, item3, back)
             
             bot.send_message(message.chat.id, 'График завтраков, обедов и полдников', reply_markup = markup)
+            
+        elif message.text== "Назад":
+            markup = types.ReplyKeyboardMarkup(resize_keyboard = True)
+            item1 = types.KeyboardButton('Меню блюд по дням')
+            item2 = types.KeyboardButton('График завтраков, обедов и полдников')
+            item3 = types.KeyboardButton('Распределение столов')
+    
+            markup.add(item1, item2, item3) 
+    
+            bot.send_message(message.chat.id, 'Назад', reply_markup = markup)
+            
 
             
     
