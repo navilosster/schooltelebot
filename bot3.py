@@ -9,10 +9,11 @@ def start(message):
     item1 = types.KeyboardButton('Меню блюд по дням')
     item2 = types.KeyboardButton('График завтраков, обедов и полдников')
     item3 = types.KeyboardButton('Распределение столов')
+    item4 = types.KeyboardButton("Список дежурных")
     
-    markup.add(item1, item2, item3) 
+    markup.add(item1, item2, item3, item4) 
     
-    bot.send_message(message.chat.id, '*Привет, {0.first_name}! Выбери нужную тебе информацию, которую ты хочешь узнать.*'.format(message.from_user), reply_markup = markup, parse_mode= "Markdown")
+    bot.send_message(message.chat.id, '*Привет, {0.first_name}! Выбери нужную тебе информацию, которую ты хочешь узнать. Все сведения о школьной столовой взяты с официального сайта МБОУ СОШ №15. https://pytnashka-kras.edumsko.ru/conditions/eating *'.format(message.from_user), reply_markup = markup, parse_mode= "Markdown")
     
 @bot.message_handler(content_types=['text'])
 def bot_message(message):
@@ -40,7 +41,7 @@ def bot_message(message):
         elif(message.text=="3-й день"):
             bot.send_message(message.chat.id, "1. *Завтрак:* _Пудинг из творога запеченный, соус абрикосовый, сыр (порциями), чай с лимонами, хлеб из муки пшеничной. Калорийность: 658 ккал._ \n\n*2. Обед:* _Икра из кабачков, борщ с капустой и картофелем, гуляш из мяса птицы, каша гречневая, компот из плодов свежих(яблоки), хлеб из муки пшеничной, хлеб ржано-пшеничный. Калорийность 566 ккал._ \n\n*3. Полдник:* _Огурцы, консервированные без уксуса, котлета рыбная, рагу из овощей, напиток клубничный, хлеб из муки пшеничной. Калорийность: 446 ккал._",  parse_mode= "Markdown")
         elif(message.text=="4-й день"):
-            bot.send_message(message.chat.id, "1. *Завтрак:* _Омлет, печенье, какао-напиток на молоке, хлеб из муки пшеничной. Калорийность: 641 ккал._ \n\n*2. Обед:* _Салат Осенний, суп картофельный с рисом, котлета рыбная, пюре картофельное, компот из плодов сушеных, хлеб из муки пшеничной, хлеб ржано-пшеничный. Калорийность: 603 ккал._ \n\n*3. Полдник:* _Кукуруза консервированная, макароны с сыром, чай, хлеб из муки пшеничной. КалорийностЬ: 452 ккал._")
+            bot.send_message(message.chat.id, "1. *Завтрак:* _Омлет, печенье, какао-напиток на молоке, хлеб из муки пшеничной. Калорийность: 641 ккал._ \n\n*2. Обед:* _Салат Осенний, суп картофельный с рисом, котлета рыбная, пюре картофельное, компот из плодов сушеных, хлеб из муки пшеничной, хлеб ржано-пшеничный. Калорийность: 603 ккал._ \n\n*3. Полдник:* _Кукуруза консервированная, макароны с сыром, чай, хлеб из муки пшеничной. Калорийность: 452 ккал._", parse_mode="Markdown")
         elif(message.text=="5-й день"):
             bot.send_message(message.chat.id, "1. *Завтрак:* _Каша пшенная, сыр (порциями), печенье, кофейный напиток злаковый на молоке, хлеб из муки пшеничной. Калорийность: 599 ккал._ \n\n*2. Обед:* _Салат и свеклы с маслом растительным, суп картофельный с фасолью, пельмени с маслом сливочным, компот из плодов свежих (яблоки), хлеб из муки пшеничной, хлеб ржано-пшеничный. Калорийность: 944 ккал._ \n\n*3. Полдник:* _Пудинг из творога запеченный, молоко сгущенное, фрукты свежие по сезонности, чай с молоком, хлеб из муки пшеничной. Калорийность: 538 ккал._",  parse_mode= "Markdown")
         elif(message.text=="6-й день"):
@@ -78,14 +79,86 @@ def bot_message(message):
             item1 = types.KeyboardButton('Меню блюд по дням')
             item2 = types.KeyboardButton('График завтраков, обедов и полдников')
             item3 = types.KeyboardButton('Распределение столов')
+            item4 = types.KeyboardButton("Список дежурных")
     
-            markup.add(item1, item2, item3)
+            markup.add(item1, item2, item3, item4)
             bot.send_message(message.chat.id, "_Назад_", reply_markup=markup, parse_mode="Markdown")
             
         if message.text=="Распределение столов":
-            bot.send_photo(message.chat.id, photo=("https://i.yapx.ru/YY2TB.png"))
-          
+            bot.send_photo(message.chat.id, photo=("https://i.yapx.ru/YZYZ5.jpg"))
+        
+        
+        if message.text=="Список дежурных":
+            markup = types.ReplyKeyboardMarkup(resize_keyboard = True)
+            item1 = types.KeyboardButton("09-10 января 2025")
+            item2 = types.KeyboardButton("13-17 января 2025")
+            item3 = types.KeyboardButton("20-24 января 2025")
+            item4 = types.KeyboardButton("27-31 января 2025")
+            item5 = types.KeyboardButton("03-07 февраля 2025")
+            item6 = types.KeyboardButton("10-14 февраля 2025")
+            item7 = types.KeyboardButton("24-28 февраля 2025")
+            item8 = types.KeyboardButton("03-07 марта 2025")
+            item9 = types.KeyboardButton("10-14 марта 2025")
+            item10 = types.KeyboardButton("17-21 марта 2025")
+            item11 = types.KeyboardButton("24-28 марта 2025")
+            item12 = types.KeyboardButton("31-04 апреля 2025")
+            item13 = types.KeyboardButton("14-18 апреля 2025")
+            item14 = types.KeyboardButton("21-25 апреля 2025")
+            item15 = types.KeyboardButton("28-02 мая 2025")
+            item16 = types.KeyboardButton("05-09 мая 2025")
+            item17 = types.KeyboardButton("12-16 мая 2025")
+            item18 = types.KeyboardButton("19-23 мая 2025")
+            item19 = types.KeyboardButton("26-30 мая 2025")
+            item20 = types.KeyboardButton("02-06 июня 2025")
+            back = types.KeyboardButton("Назад")
+            markup.add(item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11, item12, item13, item14, item15, item16, item17, item18, item19, item20, back)
+            bot.send_message(message.chat.id, "*Выбери нужную тебе дату*",reply_markup=markup, parse_mode="Markdown")
             
+            
+        elif message.text== "09-10 января 2025":
+            bot.send_message(message.chat.id, "*Класс:* _9Г_. *Классный руководитель:* _Абрамцева Марина Олеговна_", parse_mode= "Markdown")
+        elif message.text== "13-17 января 2025":
+            bot.send_message(message.chat.id, "*Класс:* _9Г_. *Классный руководитель:* _Абрамцева Марина Олеговна_", parse_mode= "Markdown")
+        elif message.text== "20-24 января 2025":
+            bot.send_message(message.chat.id, "*Класс:* _8А_. *Классный руководитель:* _Кискина Наталья Станиславовна_", parse_mode= "Markdown")
+        elif message.text== "27-31 января 2025":
+            bot.send_message(message.chat.id, "*Класс:* _8Б_. *Классный руководитель:* _Елисеева Ирина Владимировна_", parse_mode= "Markdown")
+        elif message.text== "03-07 февраля 2025":
+            bot.send_message(message.chat.id, "*Класс:* _8В_. *Классный руководитель:* _Евстропова Марина Владимировна_", parse_mode= "Markdown")
+        elif message.text== "10-14 февраля 2025":
+            bot.send_message(message.chat.id, "*Класс:* _8Г_. *Классный руководитель:* _Каштанова Натальная Александровна_", parse_mode= "Markdown")
+        elif message.text== "24-28 февраля 2025":
+            bot.send_message(message.chat.id, "*Класс:* _7А_. *Классный руководитель:* _Глишин Евгения Геннадьевна_", parse_mode= "Markdown")
+        elif message.text== "03-07 марта 2025":
+            bot.send_message(message.chat.id, "*Класс:* _7Б_. *Классный руководитель:* _Велитченко Елена Анатольевна_", parse_mode= "Markdown")
+        elif message.text== "10-14 марта 2025":
+            bot.send_message(message.chat.id, "*Класс:* _7В_. *Классный руководитель:* _Гавенко Арина Сергеевна_", parse_mode= "Markdown")
+        elif message.text== "17-21 марта 2025":
+            bot.send_message(message.chat.id, "*Класс:* _7Г_. *Классный руководитель:* _Яблокова Кристина Владиславовна_", parse_mode= "Markdown")
+        elif message.text== "24-28 марта 2025":
+            bot.send_message(message.chat.id, "*Класс:* _10А_. *Классный руководитель:* _Спинка Татьяна Викторовна_", parse_mode= "Markdown")
+        elif message.text== "31-04 апреля 2025":
+            bot.send_message(message.chat.id, "*Класс:* _10Б_. *Классный руководитель:* _Парамзин Дмитрий Николаевич_", parse_mode= "Markdown")
+        elif message.text== "14-18 апреля 2025":
+            bot.send_message(message.chat.id, "*Класс:* _8А_. *Классный руководитель:* _Кискина Наталья Станиславовна_", parse_mode= "Markdown")
+        elif message.text== "21-25 апреля 2025":
+            bot.send_message(message.chat.id, "*Класс:* _8Б_. *Классный руководитель:* _Елисеева Ирина Владимировна_", parse_mode= "Markdown")
+        elif message.text== "28-02 мая 2025":
+            bot.send_message(message.chat.id, "*Класс:* _8В_. *Классный руководитель:* _Евстрапова Марина Владимировна_", parse_mode= "Markdown")
+        elif message.text== "05-09 мая 2025":
+            bot.send_message(message.chat.id, "*Класс:* _8Г_. *Классный руководитель:* _Каштанова Натальая Александровна_", parse_mode= "Markdown")
+        elif message.text== "12-16 мая 2025":
+            bot.send_message(message.chat.id, "*Класс:* _10А_. *Классный руководитель:* _Спинка Татьяна Викторовна_", parse_mode= "Markdown")
+        elif message.text== "19-23 мая 2025":
+            bot.send_message(message.chat.id, "*Класс:* _10Б_. *Классный руководитель:* _Парамзин Дмитрий Николаевич_", parse_mode= "Markdown")
+        elif message.text== "26-30 мая 2025":
+            bot.send_message(message.chat.id, "*Класс:* _7-8 классы_. *Классный руководитель:* _Движение Первых, куратор: Гавенко Арина Сергеевна_", parse_mode= "Markdown")
+        elif message.text== "02-06 июня 2025":
+            bot.send_message(message.chat.id, "*Класс:* _7-8 классы_. *Классный руководитель:* _Волонтерский отряд 'Мы вместе', руководитель: Спинка Татьяна Викторовна_", parse_mode= "Markdown")
+        
+        
+    
+          
     
             
 bot.polling(none_stop = True)
